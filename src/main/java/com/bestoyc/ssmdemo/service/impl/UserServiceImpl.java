@@ -4,53 +4,76 @@ import com.bestoyc.ssmdemo.domain.User;
 import com.bestoyc.ssmdemo.mapper.UserMapper;
 import com.bestoyc.ssmdemo.service.UserService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * (User)表服务实现类
+ *
  * @author oyc
- * @Title: UserServiceImpl
- * @ProjectName ssmemo
- * @Description: 用户服务接口实现类
- * @date 2019/4/15 23:55
+ * @since 2020-03-25 23:44:31
  */
-@Service("UserService")
-@Transactional
+@Service("userService")
 public class UserServiceImpl implements UserService {
-
     @Resource
     private UserMapper userMapper;
 
     /**
-     * 查询所有用户
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
      */
     @Override
-    public List<User> findAll() {
-        return userMapper.findAll();
+    public User queryById(String id) {
+        return this.userMapper.queryById(id);
     }
 
     /**
-     * 根据ID查询用户详情
+     * 查询多条数据
+     *
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @return 对象列表
      */
     @Override
-    public User getById(String id) {
-        return userMapper.getById(id);
+    public List<User> queryAllByLimit(int offset, int limit) {
+        return this.userMapper.queryAllByLimit(offset, limit);
     }
 
     /**
-     * 根据ID删除用户
+     * 新增数据
+     *
+     * @param user 实例对象
+     * @return 实例对象
      */
     @Override
-    public Boolean deleteById(String id) {
-        Boolean flag = true;
-        try {
-            userMapper.deleteById(id);
-        } catch (Exception e) {
-            flag = false;
-            e.printStackTrace();
-        }
-        return flag;
+    public User insert(User user) {
+        this.userMapper.insert(user);
+        return user;
+    }
+
+    /**
+     * 修改数据
+     *
+     * @param user 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public User update(User user) {
+        this.userMapper.update(user);
+        return this.queryById(user.getId());
+    }
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    @Override
+    public boolean deleteById(String id) {
+        return this.userMapper.deleteById(id) > 0;
     }
 }

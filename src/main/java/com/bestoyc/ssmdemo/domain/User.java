@@ -1,23 +1,22 @@
 package com.bestoyc.ssmdemo.domain;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import java.io.Serializable;
 
 /**
+ * (User)实体类
+ *
  * @author oyc
- * @Title: User
- * @ProjectName ssmdemo
- * @Description: 用户实体类
- * @date 2019/4/15 23:38
+ * @since 2020-03-25 23:44:31
  */
-public class User {
-    //用户id
+public class User implements Serializable {
+    private static final long serialVersionUID = 688756946316461306L;
+    
     private String id;
-
-    //用户名称
+    
     private String name;
-
-    //户年龄
+    
     private String age;
+
 
     public String getId() {
         return id;
