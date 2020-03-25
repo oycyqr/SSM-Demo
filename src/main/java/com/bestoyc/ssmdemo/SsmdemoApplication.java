@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author ouyangcheng
+ *
  */
 @SpringBootApplication
 @MapperScan(value = "com.bestoyc.ssmdemo.mapper")
