@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@MapperScan(value = "com.bestoyc.ssmdemo.mapper")
+@MapperScan(value = "com.bestoyc.ssmdemo.mapper") //扫描的mapper文件路径
 public class SsmdemoApplication {
 
     public static void main(String[] args) {
