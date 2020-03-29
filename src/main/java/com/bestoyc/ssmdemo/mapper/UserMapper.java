@@ -8,7 +8,7 @@ import java.util.List;
  * (User)表数据库访问层
  *
  * @author oyc
- * @since 2020-03-26 19:11:57
+ * @since 2020-03-29 10:55:18
  */
 public interface UserMapper {
 
@@ -18,7 +18,7 @@ public interface UserMapper {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(String id);
+    User queryById(Integer id);
 
     /**
      * 查询指定行数据
@@ -60,6 +60,6 @@ public interface UserMapper {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(String id);
+    int deleteById(Integer id);
 
 }

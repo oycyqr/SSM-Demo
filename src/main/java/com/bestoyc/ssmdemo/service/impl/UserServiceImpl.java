@@ -12,7 +12,7 @@ import java.util.List;
  * (User)表服务实现类
  *
  * @author oyc
- * @since 2020-03-26 19:11:57
+ * @since 2020-03-29 10:54:50
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
      * @return 实例对象
      */
     @Override
-    public User queryById(String id) {
+    public User queryById(Integer id) {
         return this.userMapper.queryById(id);
     }
 
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(String id) {
+    public boolean deleteById(Integer id) {
         return this.userMapper.deleteById(id) > 0;
     }
 }

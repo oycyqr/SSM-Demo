@@ -7,7 +7,7 @@ import java.util.List;
  * (User)表服务接口
  *
  * @author oyc
- * @since 2020-03-26 19:11:57
+ * @since 2020-03-29 10:54:48
  */
 public interface UserService {
 
@@ -17,7 +17,7 @@ public interface UserService {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(String id);
+    User queryById(Integer id);
 
     /**
      * 查询多条数据
@@ -50,6 +50,6 @@ public interface UserService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(String id);
+    boolean deleteById(Integer id);
 
 }
