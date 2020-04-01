@@ -1,9 +1,11 @@
 package com.bestoyc.ssmdemo.controller;
 
+import com.bestoyc.ssmdemo.annotation.Log;
 import com.bestoyc.ssmdemo.domain.User;
+import com.bestoyc.ssmdemo.enums.BusinessType;
 import com.bestoyc.ssmdemo.service.UserService;
-import org.springframework.web.bind.annotation.*;
 import org.apache.ibatis.annotations.Delete;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,6 +32,7 @@ public class UserController {
      * @return 单条数据
      */
     @GetMapping("{id}")
+    @Log(title = "通过主键查询用户信息", businessType = BusinessType.OTHER)
     public User selectOne(@PathVariable("id") Integer id) {
         return this.userService.queryById(id);
     }
