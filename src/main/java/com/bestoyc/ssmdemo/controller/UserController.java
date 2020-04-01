@@ -56,6 +56,7 @@ public class UserController {
      * @return 实例对象
      */
     @PostMapping
+    @Log(title = "通过用户id查询用户信息", businessType = BusinessType.INSERT)
     public User save(User user) {
         return this.userService.insert(user);
     }
@@ -67,6 +68,7 @@ public class UserController {
      * @return 实例对象
      */
     @PutMapping
+    @Log(title = "通过用户id查询用户信息", businessType = BusinessType.UPDATE)
     public User saveOrUpdate(User user) {
         if (user.getId() != null) {
             return this.userService.update(user);
@@ -82,6 +84,7 @@ public class UserController {
      * @return 是否成功
      */
     @Delete("{id}")
+    @Log(title = "通过用户id查询用户信息", businessType = BusinessType.DELETE)
     public Boolean delete(@PathVariable("id") Integer id) {
         return this.userService.deleteById(id);
     }
