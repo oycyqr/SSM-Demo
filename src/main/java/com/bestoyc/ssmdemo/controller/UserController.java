@@ -32,7 +32,7 @@ public class UserController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    @Log(title = "通过主键查询用户信息", businessType = BusinessType.OTHER)
+    @Log(title = "通过用户id查询用户信息", businessType = BusinessType.OTHER)
     public User selectOne(@PathVariable("id") Integer id) {
         return this.userService.queryById(id);
     }
