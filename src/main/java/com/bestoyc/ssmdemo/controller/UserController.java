@@ -41,7 +41,7 @@ public class UserController {
     /**
      * 列表数据
      *
-     * @return 列表数据
+     * @return 用户信息列表数据
      */
     @GetMapping("list")
     public List<User> list(Integer id) {
