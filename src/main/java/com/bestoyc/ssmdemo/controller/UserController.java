@@ -44,7 +44,8 @@ public class UserController {
      * @return 用户信息列表数据
      */
     @GetMapping("list")
-    public List<User> list(Integer id) {
+    @Log(title = "查询用户信息列表", businessType = BusinessType.OTHER)
+    public List<User> list() {
         return this.userService.queryAllByLimit(1, 10);
     }
 
