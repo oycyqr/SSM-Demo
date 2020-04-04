@@ -29,6 +29,13 @@ public interface UserService {
     List<User> queryAllByLimit(int offset, int limit);
 
     /**
+     * 查询多条数据
+     * @return对象列表
+     */
+    List<User> queryAll();
+
+
+    /**
      * 新增数据
      *
      * @param user 实例对象

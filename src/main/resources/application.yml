@@ -1,14 +1,72 @@
 # mysql
+# 数据源配置
 spring:
     datasource:
-        url: jdbc:mysql://148.70.187.110:3306/ssm_demo
-        username: root
-        password: XXXXX
-        driver-class-name: com.mysql.jdbc.Driver
-        max-idle: 10
-        max-wait: 10000
-        min-idle: 5
-        initial-size:  3
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        druid:
+            url: jdbc:mysql://148.70.187.110:3306/ssm_demo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+            username: root
+            password: XXXXXX
+            # 初始连接数
+            initialSize: 2
+            # 最小连接池数量
+            minIdle: 2
+            # 最大连接池数量
+            maxActive: 20
+            # 配置获取连接等待超时的时间
+            maxWait: 60000
+            # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+            timeBetweenEvictionRunsMillis: 60000
+            # 配置一个连接在池中最小生存的时间，单位是毫秒
+            minEvictableIdleTimeMillis: 300000
+            # 配置一个连接在池中最大生存的时间，单位是毫秒
+            maxEvictableIdleTimeMillis: 900000
+            # 配置检测连接是否有效
+            validationQuery: SELECT 1 FROM DUAL
+            testWhileIdle: true
+            testOnBorrow: false
+            testOnReturn: false
+            webStatFilter:
+                enabled: true
+            statViewServlet:
+                enabled: true
+                # 设置白名单，不填则允许所有访问
+                allow:
+                url-pattern: /druid/*
+                # 控制台管理用户名和密码
+                login-username:
+                login-password:
+            filter:
+                stat:
+                    enabled: true
+                    # 慢SQL记录
+                    log-slow-sql: true
+                    slow-sql-millis: 1000
+                    merge-sql: true
+                wall:
+                    config:
+                        multi-statement-allow: true
+            #druid recycle
+            #是否自动回收超时连接
+            removeAbandoned: true
+            #超时时间(以秒数为单位)
+            removeAbandonedTimeout: 300
+            #是否在自动回收超时连接的时候打印连接的超时错误
+            logAbandoned: false
+
+# MyBatis配置
 mybatis:
-    mapper-locations: classpath:mapper/*.xml
+    # 搜索指定包别名
     type-aliases-package: com.bestoyc.ssmdemo.mapper
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件
+    mapper-locations: classpath:mapper/*.xml
+    # 加载全局的配置文件
+#    configLocation: classpath:mapper/mybatis-config.xml
+
+# PageHelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
